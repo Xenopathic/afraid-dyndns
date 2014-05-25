@@ -4,9 +4,8 @@ Release:   3%{?dist}
 Summary:   A dynamic DNS client for the free service afraid.org
 Group:     System Environment/Daemons
 License:   GPLv3+
-URL:       http://perl.arix.com
-Source0:   ftp://arix.com/afraid-dyndns-%{version}.tar.gz
-Patch:    %{name}.F10.patch
+URL:       https://github.com/Xenopathic/afraid-dyndns
+Source:    https://github.com/Xenopathic/afraid-dyndns/archive/v%{version}.tar.gz
 BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 Requires: perl
@@ -14,15 +13,7 @@ Requires: perl(Getopt::Long)
 
 %description
 This utility implements a client for the free afraid.org dynamic DNS
-service. A cron job is set up to check whether the external IP address
-has changed, and when it does, connects to afraid.org and updates the
-DNS entries of all the domains of the given account.
-
-%prep
-%setup -q
-%if 0%{?fedora} <= 10
-%patch -p0 -b .orig
-%endif
+service.
 
 %build
 
@@ -38,7 +29,6 @@ rm -rf %{buildroot}
 %doc README LICENSE
 %{_bindir}/*
 %config(noreplace) %{_sysconfdir}/afraid-dyndns.conf
-%config(noreplace) %{_sysconfdir}/cron.d/afraid-dyndns
 %dir %{_localstatedir}/cache/afraid-dyndns
 %ghost %{_localstatedir}/cache/afraid-dyndns/IP
 

@@ -1,9 +1,6 @@
 SYNOPSIS
 
     This utility implements a client for the afraid.org dynamic DNS service.
-    A cron job is set up to check whether the external IP address has
-    changed, and when it does, connects to afraid.org and updates the
-    DNS entries of all the domains of the given account.
 
 SUPPORTED OPERATING SYSTEMS
 
@@ -18,14 +15,14 @@ INSTALL
         # su -
     2. Download the tarball:
         # cd /tmp
-        # wget ftp://arix.com/afraid-dyndns-x.x.tar.gz
+        # wget https://github.com/Xenopathic/afraid-dyndns/archive/v${VERSION}.tar.gz
 
         on OSX, you can use:
-        # curl -O ftp://anon@arix.com/afraid-dyndns-x.x.tar.gz
+        # curl -O https://github.com/Xenopathic/afraid-dyndns/archive/v${VERSION}.tar.gz
     3. Untar:
-        # tar xzvf afraid-dyndns-x.x.tgz
+        # tar xzvf afraid-dyndns-${VERSION}.tgz
     4. Install:
-        # cd afraid-dyndns-x.x
+        # cd afraid-dyndns-${VERSION}
         # ./install
 
 CONFIGURATION
@@ -44,22 +41,6 @@ CONFIGURATION
    DNS is refreshed.  CacheFile is the file name where the external
    IP address will be cached.
 
-   Additionally, the cron job checks the external IP address every 15
-   minutes.  To modify this, edit /etc/cron.d/afraid-dyndns - on OSX you'll
-   need to edit the file /Library/LaunchDaemons/org.afraid.dyndns.plist (and
-   reboot)
-
-   Unlink on Linux systems where all names on the account are refreshed with
-   the IP of the host, on OSX the default configuration only names matching
-   the host's name will be refreshed.  The assumption here is that Linux
-   hosts are likely to be used as servers (which may require multiple names
-   as in the case of a webserver hosting multiple domains), whereas OSX
-   hosts are likely to be used as clients e.g. laptops which we want
-   accessible via a domain name but which roam.
-
-	To change this behaviour on OSX, edit the plist, take out the
-    hostname parameter (after the --quiet) and reboot.
-
 SYNTAX
 
    Call the script with --help
@@ -70,5 +51,7 @@ LIMITATIONS
 
 AUTHOR/SUPPORT
 
-   Erick Calder <e@arix.com> - For bugs, suggestions, etc. please
-   feel free to contact me.
+   Robin McCorkell <rmccorkell@karoshi.org.uk>
+
+   Original author:
+   Erick Calder <e@arix.com>
