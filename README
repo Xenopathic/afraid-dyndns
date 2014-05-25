@@ -23,7 +23,7 @@ INSTALL
         # tar xzvf afraid-dyndns-${VERSION}.tgz
     4. Install:
         # cd afraid-dyndns-${VERSION}
-        # ./install
+        # make install
 
 CONFIGURATION
 

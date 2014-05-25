@@ -19,7 +19,7 @@ service.
 
 %install
 rm -rf %{buildroot}
-./install %{buildroot}
+make install PREFIX=%{buildroot}
 
 %clean
 rm -rf %{buildroot}
