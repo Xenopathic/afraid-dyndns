@@ -69,6 +69,8 @@ for (readfile($CONF)) {
 	debug("[$_[0]] = [$ARGV{$_[0]}]");
 	}
 
+$hostname = $ARGV{Hostname} unless $hostname;
+
 echo("-- $0 (Ver: $VER) --");
 echo("License: GPL");
 echo("Notifications: " . $ARGV{Notify} || "None");
