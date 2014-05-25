@@ -5,6 +5,7 @@ use warnings;
 #
 #   afraid-dyndns - a Dynamic DNS client for the afraid.org free service
 #   Copyright (C) 2009 Erick Calder
+#   Copyright (C) 2014 Robin McCorkell <rmccorkell@karoshi.org.uk>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -111,7 +112,7 @@ if ($extip eq $intip && !$ARGV{force}) {
 	die "Failed fetching update head!" unless $xml;
 	my $o = XMLin($xml, ForceArray => ["item"]);
 	for (@{$o->{item}}) {
-		next if $hostname && $_->{host} !~ /$hostname/;
+		next if $hostname && $_->{host} ne $hostname;
 		debug("- $_->{host}");
 		if ($ARGV{local}) {
 			get($_->{url} . "&address=" . $extip) unless $ARGV{debug};
